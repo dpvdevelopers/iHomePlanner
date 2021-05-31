@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">iHomePlanner</string>
+    <string name="user_name">Usuario</string>
+    <string name="user_pass">Contraseña</string>
+    <string name="btn_entrar">Entrar</string>
+    <string name="chk_recordar">No cerrar sesión</string>
+    <string name="txt_recuperar_password">Recuperar contraseña</string>
+    <string name="registrar_nuevo_usuario">Registrar nuevo usuario</string>
+    <string name="lista_de_tareas">Lista de tareas</string>
+    <string name="add_task">Add task</string>
+    <string name="nombre_tarea">Nombre</string>
+    <string name="detalles_tarea">Detalles</string>
+    <string name="estado_tarea_pendiente">Pendiente</string>
+</resources>
