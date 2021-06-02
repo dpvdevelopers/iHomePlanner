@@ -6,6 +6,7 @@ import androidx.annotation.RequiresApi;
 
 import java.sql.Date;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class ShoppingCard {
@@ -13,15 +14,17 @@ public class ShoppingCard {
     private double ownerId;
     private boolean isPublic;
     private Date creationDate;
+    private ArrayList<ShoppingCardLine> lines;
     /*
                             CONSTRUCTORES
      */
 
-    public ShoppingCard(double id, double ownerId, boolean isPublic, Date creationDate) {
+    public ShoppingCard(double id, double ownerId, boolean isPublic, Date creationDate, ArrayList<ShoppingCardLine> lines) {
         this.id = id;
         this.ownerId = ownerId;
         this.isPublic = isPublic;
         this.creationDate = creationDate;
+        this.lines = lines;
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     public ShoppingCard() {
@@ -29,12 +32,14 @@ public class ShoppingCard {
         this.ownerId = 0;
         this.isPublic = false;
         this.creationDate = java.sql.Date.valueOf(Date.from(Instant.now()).toString());
+        this.lines = new ArrayList<ShoppingCardLine>();
     }
     public ShoppingCard(ShoppingCard s) {
         this.id = s.id;
         this.ownerId = s.ownerId;
         this.isPublic = s.isPublic;
         this.creationDate = s.creationDate;
+        this.lines = s.lines;
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     public ShoppingCard(double ownerId) {
@@ -42,6 +47,7 @@ public class ShoppingCard {
         this.ownerId = ownerId;
         this.isPublic = false;
         this.creationDate = java.sql.Date.valueOf(Date.from(Instant.now()).toString());
+        this.lines = new ArrayList<ShoppingCardLine>();
     }
     /*
                         FIN CONSTRUCTORES
@@ -77,6 +83,14 @@ public class ShoppingCard {
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public ArrayList<ShoppingCardLine> getLines() {
+        return lines;
+    }
+
+    public void setLines(ArrayList<ShoppingCardLine> lines) {
+        this.lines = lines;
     }
 
     @Override
