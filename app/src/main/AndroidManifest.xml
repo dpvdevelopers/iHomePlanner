@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IHomePlanner">
-        <activity android:name=".TaskList"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".Views.TaskList"></activity>
+        <activity android:name=".Views.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
