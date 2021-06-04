@@ -1,10 +1,10 @@
-package com.example.ihomeplanner.Views;
+package com.dpvdevelopers.ihomeplanner.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.ihomeplanner.R;
+import com.dpvdevelopers.ihomeplanner.R;
 
 public class TaskList extends AppCompatActivity {
 

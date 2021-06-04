@@ -1,11 +1,12 @@
-package com.example.ihomeplanner.Views;
+package com.dpvdevelopers.ihomeplanner.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.ihomeplanner.R;
+import com.dpvdevelopers.ihomeplanner.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,5 +20,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Recuperar(View view) {
+    }
+
+    public void registrarUsuario(View view) {
+        Intent intent = new Intent(this, RegActivity.class);
+        startActivity(intent);
     }
 }

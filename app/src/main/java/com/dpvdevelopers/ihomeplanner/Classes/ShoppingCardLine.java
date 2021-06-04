@@ -1,4 +1,4 @@
-package com.example.ihomeplanner.Classes;
+package com.dpvdevelopers.ihomeplanner.Classes;
 
 import android.os.Build;
 

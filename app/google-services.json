@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "78696370180",
+    "project_id": "ihomeplanner-4500f",
+    "storage_bucket": "ihomeplanner-4500f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78696370180:android:97529df9ed2d8bd4d76551",
+        "android_client_info": {
+          "package_name": "com.dpvdevelopers.ihomeplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78696370180-cvsiu9pbfig17svum43datahnhs3k8pn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAllYwGsluVqjDgiRrRd4oGnw9CZW447hI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78696370180-cvsiu9pbfig17svum43datahnhs3k8pn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
