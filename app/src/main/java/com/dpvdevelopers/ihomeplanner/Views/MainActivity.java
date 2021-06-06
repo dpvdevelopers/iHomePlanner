@@ -7,8 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.dpvdevelopers.ihomeplanner.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -32,10 +36,14 @@ public class MainActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
+
                 if(user != null){
-                    //Aquí ha iniciado sesión
-                }else{
-                    //El usuario salió de la sesión
+                    Toast.makeText(MainActivity.this, "Sesión iniciada", Toast.LENGTH_SHORT).show();
+                    if(!user.isEmailVerified()){
+                        Toast.makeText(MainActivity.this, "Debe verificar correo electrónico", Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(MainActivity.this, "Usuario con correo verificado", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         };
@@ -51,11 +59,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         if(authStateListener != null){
+
             firebaseAuth.removeAuthStateListener(authStateListener);
         }
     }
 
     public void Entrar(View view) {
+        String userName = edtUser.getText().toString();
+        String pass = edtPass.getText().toString();
+        if(!userName.equals("") && !pass.equals("")) {
+            firebaseAuth.signInWithEmailAndPassword(userName, pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (!task.isSuccessful()) {
+                        Toast toast = new Toast(getApplicationContext());
+                        toast.setText("No ha sido posible iniciar sesión");
+                        toast.setDuration(Toast.LENGTH_SHORT);
+                        toast.show();
+                        //Toast.makeText(MainActivity.this, "No ha sido posible iniciar sesión",Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        }else{
+            Toast toast = new Toast(MainActivity.this);
+            toast.setText("Debe rellenar sus datos");
+            toast.setDuration(Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     public void Recuperar(View view) {
