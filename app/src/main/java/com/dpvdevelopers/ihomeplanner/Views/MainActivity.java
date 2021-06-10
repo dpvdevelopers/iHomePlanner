@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dpvdevelopers.ihomeplanner.Classes.Utils;
 import com.dpvdevelopers.ihomeplanner.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -40,9 +41,10 @@ public class MainActivity extends AppCompatActivity {
                 if(user != null){
                     Toast.makeText(MainActivity.this, "Sesión iniciada", Toast.LENGTH_SHORT).show();
                     if(!user.isEmailVerified()){
-                        Toast.makeText(MainActivity.this, "Debe verificar correo electrónico", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "Debe verificar el correo electrónico", Toast.LENGTH_LONG).show();
                     }else{
                         Toast.makeText(MainActivity.this, "Usuario con correo verificado", Toast.LENGTH_LONG).show();
+                        //Utils.createNewUser(user, edtPass.getText().toString(),MainActivity.this);
                     }
                 }
             }
@@ -77,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
                         toast.setDuration(Toast.LENGTH_SHORT);
                         toast.show();
                         //Toast.makeText(MainActivity.this, "No ha sido posible iniciar sesión",Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(MainActivity.this, "Sesión iniciada en metodo Entrar",Toast.LENGTH_LONG).show();
+                        Utils.createNewUser(firebaseAuth.getCurrentUser(), pass, MainActivity.this);
                     }
                 }
             });
