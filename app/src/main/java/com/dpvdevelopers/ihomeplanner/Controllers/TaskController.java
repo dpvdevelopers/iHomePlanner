@@ -4,6 +4,8 @@ import com.dpvdevelopers.ihomeplanner.Classes.Task;
 import com.dpvdevelopers.ihomeplanner.Tasks.InsertTask_Task;
 import com.dpvdevelopers.ihomeplanner.Tasks.ObtainTask_Task;
 import com.dpvdevelopers.ihomeplanner.Tasks.ObtainTasks_Task;
+import com.dpvdevelopers.ihomeplanner.Tasks.UpdateTask_Task;
+import com.dpvdevelopers.ihomeplanner.Tasks.removeTask_Task;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;

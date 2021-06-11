@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dpvdevelopers.ihomeplanner.Controllers.TaskController;
 import com.dpvdevelopers.ihomeplanner.R;
 import com.dpvdevelopers.ihomeplanner.Views.TaskActivity;
 
@@ -39,7 +40,7 @@ public class TasksViewHolder extends RecyclerView.ViewHolder implements View.OnC
         //pais.setBandera(null);
         //---------------------------------------------------------------
         Intent intent = new Intent(taskListAdapter.getC(), TaskActivity.class);
-        intent.putExtra(EXTRA_OBJETO_PAIS, pais);
+        intent.putExtra(EXTRA_OBJECT_TASK, task);
         //intent.putExtra(EXTRA_BYTES_BANDERA, banderaPais);
         taskListAdapter.getC().startActivity(intent);
     }
@@ -49,7 +50,7 @@ public class TasksViewHolder extends RecyclerView.ViewHolder implements View.OnC
 
         result = false;
         int mPosition = getLayoutPosition();
-        Task task = this.taskListAdapter.getTaskList().get(mPosition);
+        Task task = this.taskListAdapter.getTasksList().get(mPosition);
         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
         builder.setMessage("Se va a borrar el pais ¿Desea continuar?");
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
@@ -60,7 +61,7 @@ public class TasksViewHolder extends RecyclerView.ViewHolder implements View.OnC
                     toast.setDuration(Toast.LENGTH_LONG);
                     toast.setText("Pais borrado correctamente");
                     toast.show();
-                    taskListAdapter.getTaskList().remove(task);
+                    taskListAdapter.getTasksList().remove(task);
                     taskListAdapter.notifyDataSetChanged();
                     result = true;
                 }

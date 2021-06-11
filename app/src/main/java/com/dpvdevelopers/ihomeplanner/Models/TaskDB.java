@@ -22,6 +22,14 @@ public class TaskDB {
         return new Task();
     }
 
+    public static Boolean removeTask(Task receivedTask) {
+        return false;
+    }
+
+    public static Boolean updateTask(Task t) {
+        return false;
+    }
+
 
 //--------------------------------------------------------------
 }

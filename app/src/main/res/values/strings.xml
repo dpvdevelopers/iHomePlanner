@@ -11,4 +11,6 @@
     <string name="nombre_tarea">Nombre</string>
     <string name="detalles_tarea">Detalles</string>
     <string name="estado_tarea_pendiente">Pendiente</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancelar</string>
 </resources>

@@ -4,6 +4,7 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.Instant;
@@ -12,7 +13,7 @@ import java.util.Objects;
 /**
  * This class is for manage task
  */
-public class Task {
+public class Task implements Serializable {
     private double id;
     private double userId;
     private String title;

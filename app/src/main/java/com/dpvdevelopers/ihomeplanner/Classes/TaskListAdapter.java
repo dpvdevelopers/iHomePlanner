@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dpvdevelopers.ihomeplanner.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TaskListAdapter extends RecyclerView.Adapter<TasksViewHolder> {
 
@@ -31,7 +32,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TasksViewHolder> {
         this.c = c;
     }
 
-    public ArrayList<Task> getTaskList() {
+    public ArrayList<Task> getTasksList() {
         return taskList;
     }
 
