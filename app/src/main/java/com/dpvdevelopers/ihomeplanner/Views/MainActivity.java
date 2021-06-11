@@ -42,9 +42,12 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Sesión iniciada", Toast.LENGTH_SHORT).show();
                     if(!user.isEmailVerified()){
                         Toast.makeText(MainActivity.this, "Debe verificar el correo electrónico", Toast.LENGTH_LONG).show();
+
                     }else{
                         Toast.makeText(MainActivity.this, "Usuario con correo verificado", Toast.LENGTH_LONG).show();
                         //Utils.createNewUser(user, edtPass.getText().toString(),MainActivity.this);
+                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                        startActivity(intent);
                     }
                 }
             }
