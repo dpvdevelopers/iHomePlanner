@@ -78,4 +78,9 @@ public class HomeActivity extends AppCompatActivity {
         toast.show();
         finish();
     }
+
+    public void showTasks(View view) {
+        Intent intent = new Intent(this, TaskList.class);
+        startActivity(intent);
+    }
 }

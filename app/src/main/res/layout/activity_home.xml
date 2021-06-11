@@ -57,21 +57,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:visibility="invisible">
+                android:visibility="visible">
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <ImageButton
-                        android:id="@+id/imageButton7"
+                        android:id="@+id/btnTasks"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_gravity="center"
                         android:layout_margin="20dp"
                         android:background="#00FFFFFF"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/button_notes" />
+                        app:srcCompat="@drawable/button_notes"
+                        android:onClick="showTasks"/>
 
                     <ImageButton
                         android:id="@+id/imageButton11"
