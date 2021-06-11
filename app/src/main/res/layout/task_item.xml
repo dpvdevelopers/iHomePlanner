@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/fondo_item"
     android:orientation="vertical"
     android:padding="6dp">
 
@@ -31,7 +32,7 @@
     <TextView
         android:id="@+id/txtTaskDetail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="6dp"
         android:paddingLeft="6dp"
         android:text="@string/detalles_tarea" />

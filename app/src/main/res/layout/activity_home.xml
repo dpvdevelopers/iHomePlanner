@@ -9,7 +9,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#5100BCD4">
+        android:background="@drawable/fondo_app">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,8 +36,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#00FFFFFF"
-                    android:scaleType="centerInside"
                     android:onClick="showHome"
+                    android:scaleType="centerInside"
                     app:srcCompat="@drawable/icons_847273_1920" />
 
                 <ImageButton
@@ -46,8 +46,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="#00FFFFFF"
-                    android:scaleType="centerInside"
                     android:onClick="showFin"
+                    android:scaleType="centerInside"
                     app:srcCompat="@drawable/icons_842877_1920" />
 
             </LinearLayout>
@@ -161,11 +161,12 @@
                 android:id="@+id/tableLayoutFinances"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:visibility="invisible">
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
+                    android:layout_height="match_parent">
 
                     <ImageButton
                         android:id="@+id/imageButton15"
@@ -189,7 +190,7 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
+                    android:layout_height="match_parent">
 
                     <ImageButton
                         android:id="@+id/imageButton17"
