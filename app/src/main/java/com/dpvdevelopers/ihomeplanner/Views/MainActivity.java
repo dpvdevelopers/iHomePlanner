@@ -1,15 +1,19 @@
 package com.dpvdevelopers.ihomeplanner.Views;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.dpvdevelopers.ihomeplanner.Classes.Utils;
+import com.dpvdevelopers.ihomeplanner.Controllers.UserController;
+import com.dpvdevelopers.ihomeplanner.Utils.Utils;
 import com.dpvdevelopers.ihomeplanner.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -17,11 +21,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.File;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText edtUser;
     private EditText edtPass;
-
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     @Override
@@ -33,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         edtPass = findViewById(R.id.edtPass);
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -45,7 +51,15 @@ public class MainActivity extends AppCompatActivity {
 
                     }else{
                         Toast.makeText(MainActivity.this, "Usuario con correo verificado", Toast.LENGTH_LONG).show();
-                        //Utils.createNewUser(user, edtPass.getText().toString(),MainActivity.this);
+                        if(edtPass.getText() != null && !edtPass.getText().equals("")){
+                            Utils.createNewUser(user, edtPass.getText().toString(),MainActivity.this);
+                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                        }else{
+                            File f = new File(getFilesDir(),"sec.d");
+
+                        }
+
                         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                         startActivity(intent);
                     }
@@ -74,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         String pass = edtPass.getText().toString();
         if(!userName.equals("") && !pass.equals("")) {
             firebaseAuth.signInWithEmailAndPassword(userName, pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (!task.isSuccessful()) {
@@ -84,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
                         //Toast.makeText(MainActivity.this, "No ha sido posible iniciar sesión",Toast.LENGTH_LONG).show();
                     }else{
                         Toast.makeText(MainActivity.this, "Sesión iniciada en metodo Entrar",Toast.LENGTH_LONG).show();
-                        Utils.createNewUser(firebaseAuth.getCurrentUser(), pass, MainActivity.this);
+                        UserController.createUser(firebaseAuth.getCurrentUser(), pass, MainActivity.this);
+                        //Utils.createNewUser(firebaseAuth.getCurrentUser(), pass, MainActivity.this);
                     }
                 }
             });

@@ -4,7 +4,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.net.sip.SipSession;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +17,7 @@ import com.dpvdevelopers.ihomeplanner.Classes.Task;
 import com.dpvdevelopers.ihomeplanner.Classes.User;
 import com.dpvdevelopers.ihomeplanner.Controllers.TaskController;
 import com.dpvdevelopers.ihomeplanner.Controllers.UserController;
+import com.dpvdevelopers.ihomeplanner.Models.ConfigDB;
 import com.dpvdevelopers.ihomeplanner.R;
 import com.dpvdevelopers.ihomeplanner.Utils.DatePickerFragment;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,12 +25,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.time.temporal.TemporalField;
 
 
 public class NewTaskActivity extends AppCompatActivity  {
     EditText edtTaskTitle;
-    TextView edtTaskDetail;
+    EditText edtTaskDetail;
     CheckBox chkFD;
     EditText edtTaskDate;
     Task userTask;
@@ -43,10 +42,10 @@ public class NewTaskActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_new_task);
         edtTaskDate = findViewById(R.id.edtTaskDate);
         edtTaskTitle = findViewById(R.id.edtTaskTitle);
-        edtTaskDetail = findViewById(R.id.txtTaskDetail);
+        edtTaskDetail = findViewById(R.id.edtTaskDetail);
         chkFD = findViewById(R.id.chkTaskFullDay);
-        edtTaskDate.setText(new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now())));
-        this.user = UserController.getUser(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        edtTaskDate.setText(new SimpleDateFormat("yyyy-mm-dd").format(Date.from(Instant.now())));
+        this.user = UserController.getUser(ConfigDB.USUARIODB);
     }
 
 
@@ -54,7 +53,7 @@ public class NewTaskActivity extends AppCompatActivity  {
         DatePickerFragment dpf = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
-                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                final String selectedDate = day + " - " + (month+1) + " - " + year;
                 edtTaskDate.setText(selectedDate);
             }
         }, this.edtTaskDate);

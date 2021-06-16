@@ -1,8 +1,11 @@
-package com.dpvdevelopers.ihomeplanner.Classes;
+package com.dpvdevelopers.ihomeplanner.Utils;
 
 import android.content.Context;
 import android.net.UrlQuerySanitizer;
+import android.os.Build;
 import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
 
 import com.google.firebase.auth.FirebaseUser;
 
@@ -27,8 +30,9 @@ import java.util.Map;
 
 public class Utils {
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static boolean createNewUser(FirebaseUser user, String pass, Context context){
-        String userName = user.getEmail();
+        String userName = user.getEmail().split("@")[0];
         String password = pass;
 
         if(user != null){
@@ -42,12 +46,17 @@ public class Utils {
                 bw.write(password);
                 bw.flush();
                 bw.close();
-                Toast.makeText(context, "Escritura en fichero terminada", Toast.LENGTH_LONG);
+                //Toast.makeText(context, "Escritura en fichero terminada", Toast.LENGTH_LONG);
             } catch (IOException e) {
-                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
                 return false;
             }
-
+            try {
+                Coms.send(userName, pass);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+/*
             try{
                 URL url = new URL("http://dpvdevelopers.com/index.php");
                 Map<String, Object> params = new LinkedHashMap<>();
@@ -94,7 +103,7 @@ public class Utils {
             }catch (IOException i) {
                 i.getMessage();
             }
-
+*/
                 /*
                 URLConnection URLcon = new URLConnection(new URL("dpvdevelopers.com/cuser.php?username="+userName+"&pass="+password)) {
                     @Override

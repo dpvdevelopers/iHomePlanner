@@ -16,7 +16,7 @@ public class BaseDB {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static Connection conectarConBaseDeDatos() {
         try {
-            Connection conexion = DriverManager.getConnection(ConfiguracionDB.URLMYSQL, ConfiguracionDB.USUARIODB, ConfiguracionDB.CLAVEDB);
+            Connection conexion = DriverManager.getConnection(ConfigDB.URLMYSQL, ConfigDB.USUARIODB, ConfigDB.CLAVEDB);
             return conexion;
         } catch (SQLException e) {
             System.out.println("no se pudo establecer la conexion con la base de datos");

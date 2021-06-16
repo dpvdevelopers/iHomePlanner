@@ -8,6 +8,6 @@ public class UserDB {
     }
 
     public static User getUser(String email) {
-        return new User();
+        return new User(1234, 1, 123456, "nombre", "apellido", "correo@falso.com", 0006);
     }
 }

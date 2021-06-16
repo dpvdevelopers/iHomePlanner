@@ -7,6 +7,7 @@ import androidx.annotation.RequiresApi;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Objects;
 
@@ -64,9 +65,9 @@ public class Task implements Serializable {
         this.userId = 0;
         this.title = "";
         this.detail = "";
-        this.date = Date.valueOf(java.util.Date.from(Instant.now()).toString());
+        this.date = Date.valueOf(new SimpleDateFormat("yyyy-mm-dd").format(Date.from(Instant.now())));
         this.time = Time.valueOf(java.util.Date.from(Instant.now()).toString());
-        this.endTime = Date.valueOf(java.util.Date.from(Instant.now()).toString());
+        this.endTime = Date.valueOf(new SimpleDateFormat("yyyy-mm-dd").format(Date.from(Instant.now())));
         this.fullDay = false;
         this.duration = 0;
     }
@@ -84,13 +85,13 @@ public class Task implements Serializable {
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Task(double userId, String title, String detail) {
-        this.id = id;
+        this.id = 123456;
         this.userId = userId;
         this.title = title;
         this.detail = detail;
-        this.date = Date.valueOf(java.util.Date.from(Instant.now()).toString());
-        this.time = Time.valueOf(java.util.Date.from(Instant.now()).toString());
-        this.endTime = Date.valueOf(java.util.Date.from(Instant.now()).toString());
+        this.date = Date.valueOf("2021-01-01") ;
+        this.time = Time.valueOf("00:00:00");
+        this.endTime = Date.valueOf("2021-01-01");
         this.fullDay = false;
         this.duration = 0;
     }

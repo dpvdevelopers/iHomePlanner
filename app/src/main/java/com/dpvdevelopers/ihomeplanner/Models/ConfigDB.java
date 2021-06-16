@@ -12,8 +12,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-public class ConfiguracionDB {
-    public static final String HOSTDB = "dpvdevelopers.com";
+public class ConfigDB {
+    public static final String HOSTDB = "http://dpvdevelopers.com";
     public static final String NOMBREDB = getUser();
     public static final String USUARIODB = getUser();
     public static final String CLAVEDB = getConn();
