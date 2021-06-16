@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IHomePlanner">
-        <activity android:name=".Views.TaskActivity"></activity>
+        <activity android:name=".Views.NewTaskActivity"></activity>
+        <activity android:name=".Views.TaskActivity" />
         <activity android:name=".Views.HomeActivity" />
         <activity android:name=".Views.RegActivity" />
         <activity android:name=".Views.TaskList" />

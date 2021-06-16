@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -70,9 +70,9 @@
                         android:layout_gravity="center"
                         android:layout_margin="20dp"
                         android:background="#00FFFFFF"
+                        android:onClick="showTasks"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/button_notes"
-                        android:onClick="showTasks"/>
+                        app:srcCompat="@drawable/button_notes" />
 
                     <ImageButton
                         android:id="@+id/imageButton11"

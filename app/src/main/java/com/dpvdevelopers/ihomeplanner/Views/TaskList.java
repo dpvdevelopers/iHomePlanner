@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.dpvdevelopers.ihomeplanner.Classes.Task;
 import com.dpvdevelopers.ihomeplanner.Classes.TaskListAdapter;
@@ -69,5 +71,10 @@ public class TaskList extends AppCompatActivity {
 
             firebaseAuth.removeAuthStateListener(authStateListener);
         }
+    }
+
+    public void createNewTask(View view) {
+        Intent intent = new Intent(this, NewTaskActivity.class);
+        startActivity(intent);
     }
 }
