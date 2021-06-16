@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dpvdevelopers.ihomeplanner.Classes.Task;
 import com.dpvdevelopers.ihomeplanner.Classes.User;
@@ -64,6 +65,11 @@ public class NewTaskActivity extends AppCompatActivity  {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void CreateUserTask(View view) {
         this.userTask = new Task(user.getId(), edtTaskTitle.getText().toString(), edtTaskDetail.getText().toString());
-        TaskController.insertTask(userTask);
+        if(TaskController.insertTask(userTask)){
+            Toast.makeText(this, "Tarea creada correctamente", Toast.LENGTH_SHORT);
+            finish();
+        }else{
+            Toast.makeText(this, "No se ha podido crear la tarea", Toast.LENGTH_SHORT);
+        }
     }
 }
