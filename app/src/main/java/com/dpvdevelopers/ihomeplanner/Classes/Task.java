@@ -5,6 +5,7 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
@@ -20,10 +21,10 @@ public class Task implements Serializable {
     private String title;
     private String detail;
     private Date date;
-    private Time time;
     private Date endTime;
     private boolean fullDay;
-    private float duration;
+    private BigDecimal duration;
+    private double asignedUser;
 
     /**
      * This is a complete constructor to create a new instance to Task class
@@ -32,21 +33,21 @@ public class Task implements Serializable {
      * @param title This is a String with a  Max length of 45 char
      * @param detail This is a String with a  Max length of 300 char
      * @param date
-     * @param time
      * @param endTime
      * @param fullDay
      * @param duration
+     * @param asignedUser
      */
-    public Task(double id, double userId, String title, String detail, Date date, Time time, Date endTime, boolean fullDay, float duration) {
+    public Task(double id, double userId, String title, String detail, Date date, Date endTime, boolean fullDay, BigDecimal duration, double asignedUser) {
         this.id = id;
         this.userId = userId;
         this.title = title;
         this.detail = detail;
         this.date = date;
-        this.time = time;
         this.endTime = endTime;
         this.fullDay = fullDay;
         this.duration = duration;
+        this.asignedUser = asignedUser;
     }
     public Task(Task t) {
         this.id = t.id;
@@ -54,10 +55,10 @@ public class Task implements Serializable {
         this.title = t.title;
         this.detail = t.detail;
         this.date = t.date;
-        this.time = t.time;
         this.endTime = t.endTime;
         this.fullDay = t.fullDay;
         this.duration = t.duration;
+        this.asignedUser = t.asignedUser;
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Task() {
@@ -66,10 +67,10 @@ public class Task implements Serializable {
         this.title = "";
         this.detail = "";
         this.date = Date.valueOf(new SimpleDateFormat("yyyy-mm-dd").format(Date.from(Instant.now())));
-        this.time = Time.valueOf(java.util.Date.from(Instant.now()).toString());
         this.endTime = Date.valueOf(new SimpleDateFormat("yyyy-mm-dd").format(Date.from(Instant.now())));
         this.fullDay = false;
-        this.duration = 0;
+        this.duration = new BigDecimal("0.0");
+        this.asignedUser = 0;
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Task(double id) {
@@ -78,10 +79,10 @@ public class Task implements Serializable {
         this.title = "";
         this.detail = "";
         this.date = Date.valueOf(java.util.Date.from(Instant.now()).toString());
-        this.time = Time.valueOf(java.util.Date.from(Instant.now()).toString());
         this.endTime = Date.valueOf(java.util.Date.from(Instant.now()).toString());
         this.fullDay = false;
-        this.duration = 0;
+        this.duration = new BigDecimal("0.0");
+        this.asignedUser = 0;
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Task(double userId, String title, String detail) {
@@ -90,10 +91,10 @@ public class Task implements Serializable {
         this.title = title;
         this.detail = detail;
         this.date = Date.valueOf("2021-01-01") ;
-        this.time = Time.valueOf("00:00:00");
         this.endTime = Date.valueOf("2021-01-01");
         this.fullDay = false;
-        this.duration = 0;
+        this.duration = new BigDecimal("0.0");
+        this.asignedUser = userId;
     }
 /*
         FIN CONSTRUCTORES
@@ -139,14 +140,6 @@ public class Task implements Serializable {
         this.date = date;
     }
 
-    public Time getTime() {
-        return time;
-    }
-
-    public void setTime(Time time) {
-        this.time = time;
-    }
-
     public Date getEndTime() {
         return endTime;
     }
@@ -163,12 +156,20 @@ public class Task implements Serializable {
         this.fullDay = fullDay;
     }
 
-    public float getDuration() {
+    public BigDecimal getDuration() {
         return duration;
     }
 
-    public void setDuration(float duration) {
+    public void setDuration(BigDecimal duration) {
         this.duration = duration;
+    }
+
+    public double getAsignedUser() {
+        return asignedUser;
+    }
+
+    public void setAsignedUser(double userId) {
+        this.userId = userId;
     }
     /*
                 FIN GETTERS AND SETTERS

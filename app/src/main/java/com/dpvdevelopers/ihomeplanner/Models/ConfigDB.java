@@ -35,6 +35,7 @@ public class ConfigDB {
             BufferedReader br = new BufferedReader(f);
             String text = br.readLine();
             br.close();
+            text.replaceAll("\n", "");
             return text;
         }
         catch (Exception ex)
