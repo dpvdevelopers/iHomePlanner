@@ -16,8 +16,8 @@ import java.util.Objects;
  * This class is for manage task
  */
 public class Task implements Serializable {
-    private double id;
-    private double userId;
+    private int id;
+    private int userId;
     private String title;
     private String detail;
     private Date date;
@@ -38,7 +38,7 @@ public class Task implements Serializable {
      * @param duration
      * @param asignedUser
      */
-    public Task(double id, double userId, String title, String detail, Date date, Date endTime, boolean fullDay, BigDecimal duration, double asignedUser) {
+    public Task(int id, int userId, String title, String detail, Date date, Date endTime, boolean fullDay, BigDecimal duration, double asignedUser) {
         this.id = id;
         this.userId = userId;
         this.title = title;
@@ -73,7 +73,7 @@ public class Task implements Serializable {
         this.asignedUser = 0;
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public Task(double id) {
+    public Task(int id) {
         this.id = id;
         this.userId = 0;
         this.title = "";
@@ -85,7 +85,7 @@ public class Task implements Serializable {
         this.asignedUser = 0;
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public Task(double userId, String title, String detail) {
+    public Task(int userId, String title, String detail) {
         this.id = 123456;
         this.userId = userId;
         this.title = title;
@@ -100,11 +100,11 @@ public class Task implements Serializable {
         FIN CONSTRUCTORES
  */
 
-    public double getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(double id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -112,7 +112,7 @@ public class Task implements Serializable {
         return userId;
     }
 
-    public void setUserId(double userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -168,7 +168,7 @@ public class Task implements Serializable {
         return asignedUser;
     }
 
-    public void setAsignedUser(double userId) {
+    public void setAsignedUser(int userId) {
         this.userId = userId;
     }
     /*

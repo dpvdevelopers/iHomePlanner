@@ -9,7 +9,7 @@ import java.time.Instant;
 import java.util.Objects;
 
 public class Entry {
-    private double id;
+    private int id;
     private String name;
     private String detail;
     private float incomeAmount;
@@ -21,7 +21,7 @@ public class Entry {
                                 CONSTRUCTORES
      */
 
-    public Entry(double id, String name, String detail, float incomeAmount, Date creationDate, double userId, boolean isIncome, String currency) {
+    public Entry(int id, String name, String detail, float incomeAmount, Date creationDate, double userId, boolean isIncome, String currency) {
         this.id = id;
         this.name = name;
         this.detail = detail;
@@ -67,11 +67,11 @@ public class Entry {
                                             FIN CONSTRUCTORES
      */
 
-    public double getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(double id) {
+    public void setId(int id) {
         this.id = id;
     }
 

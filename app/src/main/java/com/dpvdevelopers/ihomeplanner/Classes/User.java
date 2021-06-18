@@ -7,7 +7,7 @@ import androidx.annotation.RequiresApi;
 import java.util.Objects;
 
 public class User {
-    private double id;
+    private int id;
     private int level;
     private int license;
     private String name;
@@ -18,7 +18,7 @@ public class User {
     /*
                             CONSTRUCTORES
      */
-    public User(double id, int level, int license, String name, String lastName, String mail, double groupId) {
+    public User(int id, int level, int license, String name, String lastName, String mail, double groupId) {
         this.id = id;
         this.level = level;
         this.license = license;
@@ -58,11 +58,11 @@ public class User {
                             FIN CONSTRUCTORES
      */
 
-    public double getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(double id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -7,7 +7,7 @@ import androidx.annotation.RequiresApi;
 import java.util.Objects;
 
 public class Maintenance {
-    private double id;
+    private int id;
     private double vehicleId;
     private boolean isPeriodic;
     private int periodDays;
@@ -20,7 +20,7 @@ public class Maintenance {
                                         CONSTRUCTORES
      */
 
-    public Maintenance(double id, double vehicleId, boolean isPeriodic, int periodDays, int periodKms, String type, String name, String detail, float price) {
+    public Maintenance(int id, double vehicleId, boolean isPeriodic, int periodDays, int periodKms, String type, String name, String detail, float price) {
         this.id = id;
         this.vehicleId = vehicleId;
         this.isPeriodic = isPeriodic;
@@ -53,7 +53,7 @@ public class Maintenance {
         this.detail = m.detail;
         this.price = m.price;
     }
-    public Maintenance(double vehicleId, String type, String name, String detail, float price) {
+    public Maintenance(int vehicleId, String type, String name, String detail, float price) {
         this.id = 0;
         this.vehicleId = vehicleId;
         this.isPeriodic = false;
@@ -68,11 +68,11 @@ public class Maintenance {
                                             FIN CONSTRUCTORES
      */
 
-    public double getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(double id) {
+    public void setId(int id) {
         this.id = id;
     }
 

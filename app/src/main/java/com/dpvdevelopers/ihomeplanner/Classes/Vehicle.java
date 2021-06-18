@@ -9,7 +9,7 @@ import java.time.Instant;
 import java.util.Objects;
 
 public class Vehicle {
-    private double id;
+    private int id;
     private String brand;
     private String model;
     private String vin;
@@ -22,7 +22,7 @@ public class Vehicle {
                                     CONSTRUCTORES
      */
 
-    public Vehicle(double id, String brand, String model, String vin, String detail, Date date, String type, User owner, int kms) {
+    public Vehicle(int id, String brand, String model, String vin, String detail, Date date, String type, User owner, int kms) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -72,11 +72,11 @@ public class Vehicle {
                                 FIN CONSTRUCTORES
      */
 
-    public double getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(double id) {
+    public void setId(int id) {
         this.id = id;
     }
 

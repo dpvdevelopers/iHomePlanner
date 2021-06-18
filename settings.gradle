@@ -1,2 +1,3 @@
 rootProject.name = "iHomePlanner"
 include ':app'
+include ':lib'

@@ -7,7 +7,7 @@ import androidx.annotation.RequiresApi;
 import java.util.Objects;
 
 public class Group {
-    private double id;
+    private int id;
     private String name;
     private int totalUsers;
     private int license;
@@ -16,7 +16,7 @@ public class Group {
                                 CONSTRUCTORES
      */
 
-    public Group(double id, String name, int totalUsers, int license) {
+    public Group(int id, String name, int totalUsers, int license) {
         this.id = id;
         this.name = name;
         this.totalUsers = totalUsers;
@@ -44,11 +44,11 @@ public class Group {
                             FIN CONSTRUCTORES
      */
 
-    public double getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(double id) {
+    public void setId(int id) {
         this.id = id;
     }
 

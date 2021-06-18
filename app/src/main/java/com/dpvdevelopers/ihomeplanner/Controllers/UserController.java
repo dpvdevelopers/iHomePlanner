@@ -7,6 +7,7 @@ import com.dpvdevelopers.ihomeplanner.Classes.User;
 import com.dpvdevelopers.ihomeplanner.Models.UserDB;
 import com.dpvdevelopers.ihomeplanner.Tasks.CreateUser_Task;
 import com.dpvdevelopers.ihomeplanner.Tasks.InsertTask_Task;
+import com.dpvdevelopers.ihomeplanner.Tasks.InsertUser_Task;
 import com.dpvdevelopers.ihomeplanner.Tasks.ObtainTask_Task;
 import com.dpvdevelopers.ihomeplanner.Tasks.ObtainUser_Task;
 import com.google.firebase.auth.FirebaseUser;
@@ -66,6 +67,31 @@ public class UserController {
         }
         finally {
             return insertOK;
+        }
+    }
+    public static Boolean insertUser(User u){
+        Boolean result = false;
+        FutureTask t = new FutureTask(new InsertUser_Task(u));
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        es.submit(t);
+        try {
+            result = (boolean) t.get();
+            es.shutdown();
+            try {
+                if (!es.awaitTermination(800, TimeUnit.MILLISECONDS)) {
+                    es.shutdownNow();
+                }
+            } catch (InterruptedException e) {
+                es.shutdownNow();
+            }
+        } catch (
+                ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        finally {
+            return result;
         }
     }
 }

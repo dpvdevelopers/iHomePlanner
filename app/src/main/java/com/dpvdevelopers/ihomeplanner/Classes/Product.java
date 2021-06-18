@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class Product {
 
-    private Double id;
+    private int id;
     private String name;
     private String barcode;
     private String detail;
@@ -19,13 +19,13 @@ public class Product {
 
     /**
      * Complete constructor
-     * @param id This is the product id, Double
+     * @param id This is the product id, int
      * @param name This is the product name, max length 45 characters
      * @param barcode This is the barcode, max length 50 characters
      * @param detail This is the product detail, max length 150 characters
      * @param price This is the product price, float
      */
-    public Product(Double id, String name, String barcode, String detail, float price) {
+    public Product(int id, String name, String barcode, String detail, float price) {
         this.id = id;
         this.name = name;
         this.barcode = barcode;
@@ -33,7 +33,7 @@ public class Product {
         this.price = price;
     }
     public Product(String name, String detail) {
-        this.id = 0.0;
+        this.id = 0;
         this.name = name;
         this.barcode = "";
         this.detail = detail;
@@ -47,7 +47,7 @@ public class Product {
         this.price = p.price;
     }
     public Product() {
-        this.id = null;
+        this.id = 0;
         this.name = "";
         this.barcode = "";
         this.detail = "";
@@ -58,11 +58,11 @@ public class Product {
                         FIN CONSTRUCTORES
      */
 
-    public Double getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Double id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -106,7 +106,7 @@ public class Product {
         if (this == o) return true;
         if (!(o instanceof Product)) return false;
         Product product = (Product) o;
-        return id.equals(product.id) &&
+        return id == product.id &&
                 barcode.equals(product.barcode);
     }
 

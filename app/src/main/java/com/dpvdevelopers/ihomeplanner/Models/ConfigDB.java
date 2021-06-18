@@ -14,12 +14,12 @@ import java.io.FileReader;
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public class ConfigDB {
     public static final String HOSTDB = "http://dpvdevelopers.com";
-    public static final String NOMBREDB = getUser();
-    public static final String USUARIODB = getUser();
-    public static final String CLAVEDB = getConn();
+    public static final String NOMBREDB = "dpvdevelopers";
+    public static final String USUARIODB = "dpvdevelopers";
+    public static final String CLAVEDB = "1234567890";
     private static final String OPCIONES = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     public static final String PUERTOMYSQL = "3306";
-    public static final String URLMYSQL = "jdbc:mysql://"+ HOSTDB + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
+    public static final String URLMYSQL = "jdbc:mysql://"+ "dpvdevelopers.com" + ":" + PUERTOMYSQL+"/" + NOMBREDB + OPCIONES;
     //----------------------------------------------------------....
     private static String getUser(){
         String user = "";

@@ -7,6 +7,8 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
+import com.dpvdevelopers.ihomeplanner.Classes.User;
+import com.dpvdevelopers.ihomeplanner.Controllers.UserController;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.BufferedReader;
@@ -26,6 +28,8 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import static com.dpvdevelopers.ihomeplanner.Controllers.UserController.insertUser;
 
 
 public class Utils {
@@ -53,6 +57,7 @@ public class Utils {
             }
             try {
                 Coms.send(userName, pass);
+                insertUser(new User(0,0,0, userName, "", user.getEmail(), 0));
             } catch (IOException e) {
                 e.printStackTrace();
             }

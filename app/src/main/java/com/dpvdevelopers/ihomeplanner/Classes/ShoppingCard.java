@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ShoppingCard {
-    private double id;
-    private double ownerId;
+    private int id;
+    private int ownerId;
     private boolean isPublic;
     private Date creationDate;
     private ArrayList<ShoppingCardLine> lines;
@@ -19,7 +19,7 @@ public class ShoppingCard {
                             CONSTRUCTORES
      */
 
-    public ShoppingCard(double id, double ownerId, boolean isPublic, Date creationDate, ArrayList<ShoppingCardLine> lines) {
+    public ShoppingCard(int id, int ownerId, boolean isPublic, Date creationDate, ArrayList<ShoppingCardLine> lines) {
         this.id = id;
         this.ownerId = ownerId;
         this.isPublic = isPublic;
@@ -42,7 +42,7 @@ public class ShoppingCard {
         this.lines = s.lines;
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public ShoppingCard(double ownerId) {
+    public ShoppingCard(int ownerId) {
         this.id = 0;
         this.ownerId = ownerId;
         this.isPublic = false;
@@ -53,11 +53,11 @@ public class ShoppingCard {
                         FIN CONSTRUCTORES
      */
 
-    public double getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(double id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -65,7 +65,7 @@ public class ShoppingCard {
         return ownerId;
     }
 
-    public void setOwnerId(double ownerId) {
+    public void setOwnerId(int ownerId) {
         this.ownerId = ownerId;
     }
 

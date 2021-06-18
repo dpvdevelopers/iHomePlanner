@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Event {
-    private double id;
+    private int id;
     private ArrayList<User> asignedUsers;
     private User owner;
     private String title;
@@ -23,7 +23,7 @@ public class Event {
                             CONSTRUCTORES
      */
 
-    public Event(double id, ArrayList<User> asignedUsers, User owner, String title, String detail, Date creationDate, boolean fullDay, boolean isPublic, String category) {
+    public Event(int id, ArrayList<User> asignedUsers, User owner, String title, String detail, Date creationDate, boolean fullDay, boolean isPublic, String category) {
         this.id = id;
         this.asignedUsers = asignedUsers;
         this.owner = owner;
@@ -73,11 +73,11 @@ public class Event {
                                     FIN CONSTRUCTORES
      */
 
-    public double getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(double id) {
+    public void setId(int id) {
         this.id = id;
     }
 

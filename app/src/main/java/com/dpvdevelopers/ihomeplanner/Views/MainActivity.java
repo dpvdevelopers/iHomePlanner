@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.dpvdevelopers.ihomeplanner.Controllers.UserController;
+import com.dpvdevelopers.ihomeplanner.Tasks.CreateUser_Task;
 import com.dpvdevelopers.ihomeplanner.Utils.Utils;
 import com.dpvdevelopers.ihomeplanner.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.File;
+import java.util.concurrent.FutureTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     }else{
                         Toast.makeText(MainActivity.this, "Usuario con correo verificado", Toast.LENGTH_LONG).show();
                         if(edtPass.getText() != null && !edtPass.getText().equals("")){
-                            Utils.createNewUser(user, edtPass.getText().toString(),MainActivity.this);
+                            UserController.createUser(user, edtPass.getText().toString(),MainActivity.this);
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                             startActivity(intent);
                         }else{

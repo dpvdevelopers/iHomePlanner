@@ -19,7 +19,7 @@ public class BaseDB {
             Connection conexion = DriverManager.getConnection(ConfigDB.URLMYSQL, ConfigDB.USUARIODB, ConfigDB.CLAVEDB);
             return conexion;
         } catch (SQLException e) {
-            System.out.println("no se pudo establecer la conexion con la base de datos");
+            System.out.println("no se pudo establecer la conexion con la base de datos" + e.getMessage());
             return null;
         }
     }
