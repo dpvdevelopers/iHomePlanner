@@ -66,15 +66,15 @@ public class TaskDB {
             ResultSet result = stmnt.executeQuery(ordenSQL);
             while(result.next())
             {
-                double taskId = result.getDouble("TaskId");
-                double taskUser = result.getDouble("TaskUser");
+                int taskId = result.getInt("TaskId");
+                int taskUser = result.getInt("TaskUser");
                 String taskTitle = result.getString("TaskTitle");
                 String taskDetail = result.getString("TaskDetail");
                 Date taskDate = result.getDate("TaskDate");
                 Date taskEndDate = result.getDate("TaskEndDate");
                 Boolean taskFullDay = result.getBoolean("TaskFullDay");
                 BigDecimal taskDuration = result.getBigDecimal("TaskDuration");
-                double taskAsignedUser = result.getDouble("TaskAsignedUser");
+                int taskAsignedUser = result.getInt("TaskAsignedUser");
                 Task t = new Task(taskId, taskUser, taskTitle, taskDetail, taskDate, taskEndDate, taskFullDay, taskDuration, taskAsignedUser);
                 obtainedTasks.add(t);
             }
@@ -106,14 +106,14 @@ public class TaskDB {
             }
             while(result.next())
             {
-                double taskId = result.getDouble("TaskId");
-                double taskUser = result.getDouble("TaskUser");
+                int taskId = result.getInt("TaskId");
+                int taskUser = result.getInt("TaskUser");
                 String taskDetail = result.getString("TaskDetail");
                 Date taskDate = result.getDate("TaskDate");
                 Date taskEndDate = result.getDate("TaskEndDate");
                 Boolean taskFullDay = result.getBoolean("TaskFullDay");
                 BigDecimal taskDuration = result.getBigDecimal("TaskDuration");
-                double taskAsignedUser = result.getDouble("TaskAsignedUser");
+                int taskAsignedUser = result.getInt("TaskAsignedUser");
                 foundTask = new Task(taskId, taskUser, taskTitle, taskDetail, taskDate, taskEndDate, taskFullDay, taskDuration, taskAsignedUser);
 
             }
@@ -126,7 +126,7 @@ public class TaskDB {
         }
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public static Task obtainTask(double taskId) {
+    public static Task obtainTask(int taskId) {
         Connection conexion = BaseDB.conectarConBaseDeDatos();
         if(conexion == null)
         {
@@ -144,13 +144,13 @@ public class TaskDB {
             while(result.next())
             {
                 String taskTitle = result.getString("TaskTitle");
-                double taskUser = result.getDouble("TaskUser");
+                int taskUser = result.getInt("TaskUser");
                 String taskDetail = result.getString("TaskDetail");
                 Date taskDate = result.getDate("TaskDate");
                 Date taskEndDate = result.getDate("TaskEndDate");
                 Boolean taskFullDay = result.getBoolean("TaskFullDay");
                 BigDecimal taskDuration = result.getBigDecimal("TaskDuration");
-                double taskAsignedUser = result.getDouble("TaskAsignedUser");
+                int taskAsignedUser = result.getInt("TaskAsignedUser");
                 foundTask = new Task(taskId, taskUser, taskTitle, taskDetail, taskDate, taskEndDate, taskFullDay, taskDuration, taskAsignedUser);
 
             }
@@ -174,7 +174,7 @@ public class TaskDB {
         try {
             String ordensql = "DELETE FROM tasks WHERE id = ?;";
             PreparedStatement pst = conexion.prepareStatement(ordensql);
-            pst.setDouble(1, receivedTask.getId());
+            pst.setInt(1, receivedTask.getId());
             int affectedRows = pst.executeUpdate();
             pst.close();
             conexion.close();
@@ -204,7 +204,7 @@ public class TaskDB {
                     "TaskDate = ?, TaskEndDate = ?, TaskFullDay = ?, TaskDuration = ?, " +
                     "TaskAsignedUser = ? WHERE id = ?";
             PreparedStatement pst = conexion.prepareStatement(ordensql);
-            pst.setDouble(1, t.getUserId());
+            pst.setInt(1, t.getUserId());
             pst.setString(2, t.getTitle());
             pst.setString(3, t.getDetail());
             pst.setString(4, new SimpleDateFormat("yyyy-MM-dd").format(t.getDate()));

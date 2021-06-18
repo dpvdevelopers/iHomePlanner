@@ -108,7 +108,7 @@ public class Task implements Serializable {
         this.id = id;
     }
 
-    public double getUserId() {
+    public int getUserId() {
         return userId;
     }
 
