@@ -1,5 +1,9 @@
 package com.dpvdevelopers.ihomeplanner.Tasks;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.dpvdevelopers.ihomeplanner.Classes.Task;
 import com.dpvdevelopers.ihomeplanner.Models.TaskDB;
 
@@ -11,6 +15,7 @@ public class UpdateTask_Task implements Callable<Boolean> {
         this.t = receivedTask;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public Boolean call() throws Exception {
         return TaskDB.updateTask(t);

@@ -59,7 +59,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TasksViewHolder> {
 
         Task actTask = taskList.get(position);
         holder.txt_rv_task_title.setText( actTask.getTitle());
-        holder.txt_rv_task_status.setText(actTask.getEndTime().toString());
+        holder.txt_rv_task_status.setText(actTask.getDate().toString());
         holder.txt_rv_task_detail.setText(actTask.getDetail());
     }
 

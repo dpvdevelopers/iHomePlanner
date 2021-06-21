@@ -36,12 +36,10 @@ public class TasksViewHolder extends RecyclerView.ViewHolder implements View.OnC
     public void onClick(View v) {
         int mPosition = getLayoutPosition();
         Task task = this.taskListAdapter.getTasksList().get(mPosition);
-        //byte[] banderaPais = ImagesHandler.convertBitmapToByteArray(pais.getBandera());
-        //pais.setBandera(null);
+
         //---------------------------------------------------------------
         Intent intent = new Intent(taskListAdapter.getC(), TaskActivity.class);
         intent.putExtra(EXTRA_OBJECT_TASK, task);
-        //intent.putExtra(EXTRA_BYTES_BANDERA, banderaPais);
         taskListAdapter.getC().startActivity(intent);
     }
 

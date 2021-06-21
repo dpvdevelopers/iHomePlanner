@@ -172,7 +172,7 @@ public class TaskDB {
         }
         //----------------------------
         try {
-            String ordensql = "DELETE FROM Tasks WHERE id = ?;";
+            String ordensql = "DELETE FROM Tasks WHERE TaskId = ?;";
             PreparedStatement pst = conexion.prepareStatement(ordensql);
             pst.setInt(1, receivedTask.getId());
             int affectedRows = pst.executeUpdate();
@@ -202,7 +202,7 @@ public class TaskDB {
         try {
             String ordensql = "UPDATE Tasks SET TaskUser = ?, TaskTitle = ?, TaskDetail = ?," +
                     "TaskDate = ?, TaskEndDate = ?, TaskFullDay = ?, TaskDuration = ?, " +
-                    "TaskAsignedUser = ? WHERE id = ?";
+                    "TaskAsignedUser = ? WHERE TaskId = ?";
             PreparedStatement pst = conexion.prepareStatement(ordensql);
             pst.setInt(1, t.getUserId());
             pst.setString(2, t.getTitle());
@@ -211,7 +211,8 @@ public class TaskDB {
             pst.setString( 5,new SimpleDateFormat("yyyy-MM-dd").format(t.getEndTime()));
             pst.setBoolean( 6, t.isFullDay());
             pst.setBigDecimal(7, t.getDuration());
-            pst.setDouble(8, t.getId());
+            pst.setDouble(8, t.getAsignedUser());
+            pst.setInt( 9, t.getId());
             int filasAfectadas = pst.executeUpdate();
             pst.close();
             conexion.close();
