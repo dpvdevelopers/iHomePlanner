@@ -90,8 +90,8 @@ public class Task implements Serializable {
         this.userId = userId;
         this.title = title;
         this.detail = detail;
-        this.date = Date.valueOf("2021-01-01") ;
-        this.endTime = Date.valueOf("2021-01-01");
+        this.date = Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now()))) ;
+        this.endTime =  Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now()))) ;//Date.valueOf("2021-01-01");
         this.fullDay = false;
         this.duration = new BigDecimal("0.0");
         this.asignedUser = userId;

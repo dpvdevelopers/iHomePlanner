@@ -30,7 +30,6 @@ public class TaskList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list);
         rv_tasks = findViewById(R.id.rv_tasks);
-        updateLocalData();
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -44,11 +43,13 @@ public class TaskList extends AppCompatActivity {
                         //Usuario sin correo verificado
 
                     }else{
+
                         //Usuario con correo verificado
                     }
                 }
             }
         };
+        updateLocalData();
     }
 
     private void updateLocalData() {

@@ -17,9 +17,11 @@ public class BaseDB {
     public static Connection conectarConBaseDeDatos() {
         try {
             Connection conexion = DriverManager.getConnection(ConfigDB.URLMYSQL, ConfigDB.USUARIODB, ConfigDB.CLAVEDB);
+            Statement stmt = conexion.createStatement();
+            stmt.execute("use "+ConfigDB.USUARIODB + ";");
             return conexion;
         } catch (SQLException e) {
-            System.out.println("no se pudo establecer la conexion con la base de datos" + e.getMessage());
+            System.out.println("no se pudo establecer la conexion con la base de datos: " + e.getMessage() + "//"+ e.getErrorCode());
             return null;
         }
     }

@@ -1,8 +1,10 @@
 package com.dpvdevelopers.ihomeplanner.Utils;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.UrlQuerySanitizer;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -40,8 +42,9 @@ public class Utils {
         String password = pass;
 
         if(user != null){
-            try {
-                File f = new File(context.getFilesDir(),"sec.d");
+
+
+                /*File f = new File(context.getFilesDir(),"sec.d");
                 if(!f.exists()){
                     f.createNewFile();
                 }
@@ -50,11 +53,12 @@ public class Utils {
                 bw.write(password);
                 bw.flush();
                 bw.close();
+                */
+
                 //Toast.makeText(context, "Escritura en fichero terminada", Toast.LENGTH_LONG);
-            } catch (IOException e) {
-                //Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
-                return false;
-            }
+
+
+
             try {
                 Coms.send(userName, pass);
                 insertUser(new User(0,0,0, userName, "", user.getEmail(), 0));

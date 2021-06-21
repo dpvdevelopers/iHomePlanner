@@ -8,11 +8,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.dpvdevelopers.ihomeplanner.Controllers.UserController;
+import com.dpvdevelopers.ihomeplanner.Models.ConfigDB;
 import com.dpvdevelopers.ihomeplanner.Tasks.CreateUser_Task;
 import com.dpvdevelopers.ihomeplanner.Utils.Utils;
 import com.dpvdevelopers.ihomeplanner.R;
@@ -31,11 +33,17 @@ public class MainActivity extends AppCompatActivity {
     private EditText edtPass;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        if(ConfigDB.initConfig(getApplicationContext())){
+            Log.i("initConfig", "Configuración correcta de la base de datos" + "Datos de configuración: " +
+                    ConfigDB.CLAVEDB + " " + ConfigDB.USUARIODB + " " + ConfigDB.NOMBREDB);
+        }else{
+            Log.i("initConfig", "Datos de configuración: " + ConfigDB.CLAVEDB + " " + ConfigDB.USUARIODB + " " + ConfigDB.NOMBREDB );
+        }
         edtUser = findViewById(R.id.edtUsuario);
         edtPass = findViewById(R.id.edtPass);
         firebaseAuth = FirebaseAuth.getInstance();
@@ -43,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                firebaseAuth = FirebaseAuth.getInstance();
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
 
@@ -102,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
                     }else{
                         Toast.makeText(MainActivity.this, "Sesión iniciada en metodo Entrar",Toast.LENGTH_LONG).show();
                         UserController.createUser(firebaseAuth.getCurrentUser(), pass, MainActivity.this);
+                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                        startActivity(intent);
                         //Utils.createNewUser(firebaseAuth.getCurrentUser(), pass, MainActivity.this);
                     }
                 }

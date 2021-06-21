@@ -21,6 +21,7 @@ import com.dpvdevelopers.ihomeplanner.Models.ConfigDB;
 import com.dpvdevelopers.ihomeplanner.R;
 import com.dpvdevelopers.ihomeplanner.Utils.DatePickerFragment;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -34,7 +35,8 @@ public class NewTaskActivity extends AppCompatActivity  {
     EditText edtTaskDate;
     Task userTask;
     User user;
-
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +46,8 @@ public class NewTaskActivity extends AppCompatActivity  {
         edtTaskTitle = findViewById(R.id.edtTaskTitle);
         edtTaskDetail = findViewById(R.id.edtTaskDetail);
         chkFD = findViewById(R.id.chkTaskFullDay);
-        edtTaskDate.setText(new SimpleDateFormat("yyyy-mm-dd").format(Date.from(Instant.now())));
-        this.user = UserController.getUser(ConfigDB.USUARIODB);
+        edtTaskDate.setText(new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now())));
+        this.user = UserController.getUser(FirebaseAuth.getInstance().getCurrentUser().getEmail());
     }
 
 

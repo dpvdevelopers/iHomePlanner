@@ -28,9 +28,9 @@ public class TaskDB {
         }
         //----------------------------
         try {
-            String ordensql = "INSERT INTO tasks (TaskUser, TaskTitle, TaskDetail, TaskDate, TaskEndDate, TaskFullDay, TaskDuration) VALUES (?, ?, ?, ?, ?, ?, ?);";
+            String ordensql = "INSERT INTO Tasks (TaskUser, TaskTitle, TaskDetail, TaskDate, TaskEndDate, TaskFullDay, TaskDuration) VALUES (?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement pst = conexion.prepareStatement(ordensql);
-            pst.setDouble(1, rT.getUserId());
+            pst.setInt(1, rT.getUserId());
             pst.setString(2, rT.getTitle());
             pst.setString(3, rT.getDetail());
             pst.setString(4, new SimpleDateFormat("yyyy-MM-dd").format(rT.getDate()));
@@ -62,7 +62,7 @@ public class TaskDB {
         ArrayList<Task> obtainedTasks = new ArrayList<Task>();
         try {
             Statement stmnt = conexion.createStatement();
-            String ordenSQL = "select * from tasks";
+            String ordenSQL = "select * from Tasks";
             ResultSet result = stmnt.executeQuery(ordenSQL);
             while(result.next())
             {
@@ -98,7 +98,7 @@ public class TaskDB {
         //---------------------------------
         Task foundTask = null;
         try {
-            ResultSet result = BaseDB.buscarFilasEnTabla(conexion, "tasks", "TaskTitle", taskTitle);
+            ResultSet result = BaseDB.buscarFilasEnTabla(conexion, "Tasks", "TaskTitle", taskTitle);
             //------------------------------------------------
             if(result == null)
             {
@@ -135,7 +135,7 @@ public class TaskDB {
         //---------------------------------
         Task foundTask = null;
         try {
-            ResultSet result = BaseDB.buscarFilasEnTabla(conexion, "tasks", "TaskId", String.valueOf(taskId));
+            ResultSet result = BaseDB.buscarFilasEnTabla(conexion, "Tasks", "TaskId", String.valueOf(taskId));
             //------------------------------------------------
             if(result == null)
             {
@@ -172,7 +172,7 @@ public class TaskDB {
         }
         //----------------------------
         try {
-            String ordensql = "DELETE FROM tasks WHERE id = ?;";
+            String ordensql = "DELETE FROM Tasks WHERE id = ?;";
             PreparedStatement pst = conexion.prepareStatement(ordensql);
             pst.setInt(1, receivedTask.getId());
             int affectedRows = pst.executeUpdate();
@@ -200,7 +200,7 @@ public class TaskDB {
         }
         //----------------------------
         try {
-            String ordensql = "UPDATE tasks SET TaskUser = ?, TaskTitle = ?, TaskDetail = ?," +
+            String ordensql = "UPDATE Tasks SET TaskUser = ?, TaskTitle = ?, TaskDetail = ?," +
                     "TaskDate = ?, TaskEndDate = ?, TaskFullDay = ?, TaskDuration = ?, " +
                     "TaskAsignedUser = ? WHERE id = ?";
             PreparedStatement pst = conexion.prepareStatement(ordensql);

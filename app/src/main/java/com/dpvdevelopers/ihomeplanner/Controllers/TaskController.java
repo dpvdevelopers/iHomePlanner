@@ -55,11 +55,14 @@ public class TaskController {
                     es.shutdownNow();
                 }
             } catch (InterruptedException e) {
+                returnedTasks = new ArrayList<Task>();
                 es.shutdownNow();
             }
         } catch (ExecutionException e) {
+            returnedTasks = new ArrayList<Task>();
             e.printStackTrace();
         } catch (InterruptedException e) {
+            returnedTasks = new ArrayList<Task>();
             e.printStackTrace();
         }
         return returnedTasks;

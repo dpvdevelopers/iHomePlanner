@@ -65,7 +65,7 @@ public class UserDB {
                 int UserLicense = result.getInt("UserLicense");
                 String UserName = result.getString("UserName");
                 String UserLastName = result.getString("UserLastName");
-                double UserGroup = result.getDouble("UserGroup");
+                int UserGroup = result.getInt("UserGroup");
                 foundUser = new User( UserId,  UserLevel, UserLicense, UserName, UserLastName, email, UserGroup);
 
             }
