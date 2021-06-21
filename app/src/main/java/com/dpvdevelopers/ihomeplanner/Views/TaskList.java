@@ -63,6 +63,7 @@ public class TaskList extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         firebaseAuth.addAuthStateListener(authStateListener);
+        updateLocalData();
     }
 
     @Override

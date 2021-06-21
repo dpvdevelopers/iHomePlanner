@@ -52,14 +52,14 @@ public class TasksViewHolder extends RecyclerView.ViewHolder implements View.OnC
         int mPosition = getLayoutPosition();
         Task task = this.taskListAdapter.getTasksList().get(mPosition);
         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-        builder.setMessage("Se va a borrar el pais ¿Desea continuar?");
+        builder.setMessage("Se va a borrar la tarea ¿Desea continuar?");
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User clicked OK button
                 if(TaskController.removeTask(task)){
                     Toast toast = new Toast(v.getContext());
                     toast.setDuration(Toast.LENGTH_LONG);
-                    toast.setText("Pais borrado correctamente");
+                    toast.setText("Tarea borrada correctamente");
                     toast.show();
                     taskListAdapter.getTasksList().remove(task);
                     taskListAdapter.notifyDataSetChanged();
